@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 # For getting the settings I guess
 from django.conf import settings
 # 
+from .models import Upload
 from .forms import UploadForm
 #
 from django.core.files.storage import FileSystemStorage
@@ -24,7 +25,11 @@ def upload_direct(request):
 
 # Create your views here.
 def index(request):
-	return render(request, "home.html", {})
+	uploads = Upload.objects.all()
+	context = {
+		'uploads' : uploads,
+	}
+	return render(request, "home.html", context)
 
 
 

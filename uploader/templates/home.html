@@ -3,8 +3,25 @@
 {% load staticfiles %}
 
 {% block content %}
-	<div>
-		<p><a href="{% url 'direct' %}">Direct</a></p>
-		<p><a href="{% url 'model' %}">Model Form</a></p>
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<ul>
+				<li><a href="{% url 'direct' %}">Upload Directy</a></li></p>
+				<li><a href="{% url 'model' %}">Through a Model Form</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<ul>
+				{% for obj in uploads %}
+				<li>
+					<a href="{{ obj.uploaded_at.url}}">{{obj.uploaded_at.name}}</a>
+					<small>(Uploaded at: {{obj.timestamp}})</small>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
 	</div>
 {% endblock %} 

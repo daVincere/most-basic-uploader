@@ -26,12 +26,12 @@ from main import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^', views.index, name='home'),
-    url(r'^upload/direct/$', views.upload_direct, name='direct'),
-    url(r'^upload/model/$', views.upload_model_form, name='model'),
+    url(r'^$', views.index, name='home'),
+    url(r'^upload/direct', views.upload_direct, name='direct'),
+    url(r'^upload/model', views.upload_model_form, name='model'),
 ]
 
 
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-	urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

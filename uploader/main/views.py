@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # For getting the settings I guess
 from django.conf import settings
@@ -24,7 +24,7 @@ def upload_direct(request):
 
 # Create your views here.
 def index(request):
-	return render(request, "base.html", {})
+	return render(request, "home.html", {})
 
 
 
@@ -34,6 +34,7 @@ def upload_model_form(request):
 		if form.is_valid():
 			form.save()
 			return redirect('home')
+	
 	else:
 		form = UploadForm()
 

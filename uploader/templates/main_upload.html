@@ -3,16 +3,24 @@
 {% load staticfiles %}
 
 {% block content %}
-	<form method="POST" enctype="multipart/form-data">{% csrf_token %}
+	<div class="row" align="center">
+		<div class="col-md-4 col-md-offset-4">
+			<form method="POST" enctype="multipart/form-data">{% csrf_token %}
 
-		<input type="file" name="file">
-		<button type="submit">Upload</button>
-	</form>
+				<input class="btn btn-default" type="file" name="file">
+				<div class="clear clear-fix" style="height: 10px;"></div>
+				<button class="btn btn-default" type="submit">Upload</button>
+			</form>
 
-	{% if uploaded_file_url %}
+			{% if uploaded_file_url %}
 
-		<p>File uploaded at: <a href="{{ uploaded_file_url }}"></a></p>
-	{% endif %}
+				<p>File uploaded at: <a href="{{ uploaded_file_url }}"></a></p>
+			{% endif %}
+			<div class="clear clear-fix" style="height: 30px;"></div>
+			<div class="col-md-4 col-md-offset-4" align="center">			
+			<p><a href="{% url 'home' %}">Home</a></p>
+			</div>
 
-	<p><a href="{% url 'home' %}">Home</a></p>
+		</div>
+	</div>
 {% endblock %}
